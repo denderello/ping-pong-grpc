@@ -7,5 +7,6 @@ import (
 )
 
 func (s *GRPCServer) SendPing(ctx context.Context, in *pingpong.Ping) (*pingpong.Pong, error) {
+	s.metrics.RPCCounter.Add(1)
 	return &pingpong.Pong{Message: "pong"}, nil
 }
